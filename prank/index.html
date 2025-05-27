@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>PRANK!!!</title>
+  <style>
+    body {
+      background-color: black;
+      color: lime;
+      font-family: monospace;
+      text-align: center;
+      padding-top: 50px;
+      overflow: hidden;
+      height: 100vh;
+      margin: 0;
+    }
+
+    h1, p.warning, p {
+      position: relative;
+      z-index: 1;
+    }
+
+    #dvd {
+      width: 300px;
+      position: absolute;
+      top: 100px;
+      left: 100px;
+      z-index: 0;
+      filter: drop-shadow(0 0 10px lime);
+    }
+
+    .warning {
+      font-size: 24px;
+      color: red;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>💀 Selamat! 💀</h1>
+  <p>kamu kena prank phising</p>
+  <img id="dvd" src="foto.jpeg" alt="jawir Si Hacker Jahat">
+  <p class="warning">Data diri aja ngga bisa dijaga, apalagi ayang awokaowkao!</p>
+
+  <script>
+    const img = document.getElementById('dvd');
+    let posX = 100;
+    let posY = 100;
+    let dx = 2;
+    let dy = 2;
+    const imgWidth = 300;
+    const imgHeight = 300;
+
+    function moveImage() {
+      const winWidth = window.innerWidth;
+      const winHeight = window.innerHeight;
+
+      posX += dx;
+      posY += dy;
+
+      if (posX + imgWidth >= winWidth || posX <= 0) {
+        dx *= -1;
+      }
+      if (posY + imgHeight >= winHeight || posY <= 0) {
+        dy *= -1;
+      }
+
+      img.style.left = posX + 'px';
+      img.style.top = posY + 'px';
+
+      requestAnimationFrame(moveImage);
+    }
+
+    moveImage();
+  </script>
+</body>
+</html>
